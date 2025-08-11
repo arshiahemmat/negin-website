@@ -19,7 +19,8 @@ body {
   background-color: var(--secondary);
   color: var(--text);
   line-height: 1.6;
-  overflow-x: hidden;
+  /* Avoid clipping horizontally overflowing elements; allow scroll if necessary */
+  overflow-x: auto;
 }
 
 a {
@@ -33,13 +34,10 @@ a {
   width: 100%;
   top: 0;
   left: 0;
-  /* Reduce horizontal padding so navigation links have more room on smaller screens */
   padding: 20px 20px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  row-gap: 10px;
   z-index: 999;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(8px);
@@ -50,6 +48,14 @@ a {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 24px;
+  color: var(--primary);
+}
+
+/* Menu toggle for smaller screens */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
   color: var(--primary);
 }
 
@@ -68,12 +74,13 @@ a {
   /* occupy remaining width so links have ample room */
   flex: 1 1 auto;
   justify-content: flex-end;
-  gap: 20px;
+  gap: 12px;
   white-space: normal;
 }
 
 .nav-links li a {
   font-weight: 600;
+  font-size: 0.85rem;
   transition: color 0.3s ease;
 }
 
@@ -208,6 +215,13 @@ h2 {
   opacity: 0.8;
 }
 
+/* Style for the sub‑score line inside result cards */
+.card .score {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
 /* Contact Section */
 .contact {
   background-color: var(--dark);
@@ -310,6 +324,29 @@ h2 {
   }
   .logo {
     margin-bottom: 8px;
+  }
+}
+
+/* Collapse the navigation into a vertical menu on small screens. A hamburger icon is shown to
+   toggle the menu. */
+@media (max-width: 1050px) {
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+  }
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    display: none;
+    margin-top: 10px;
+  }
+  .navbar.open .nav-links {
+    display: flex;
   }
 }
 

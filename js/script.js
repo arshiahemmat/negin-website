@@ -78,4 +78,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.4 });
     statsObserver.observe(statsSection);
   }
+
+  /*
+   * Mobile navigation toggle. On small screens, a hamburger icon is displayed. When the
+   * icon is clicked, it toggles the `.open` class on the navbar, showing or hiding
+   * the navigation links.
+   */
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navbar = document.querySelector('.navbar');
+  if (menuToggle && navbar) {
+    menuToggle.addEventListener('click', () => {
+      navbar.classList.toggle('open');
+    });
+  }
 });
