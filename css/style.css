@@ -33,10 +33,13 @@ a {
   width: 100%;
   top: 0;
   left: 0;
-  padding: 20px 40px;
+  /* Reduce horizontal padding so navigation links have more room on smaller screens */
+  padding: 20px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 10px;
   z-index: 999;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(8px);
@@ -53,7 +56,10 @@ a {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 30px;
+  /* Tighten the gap to prevent the rightmost link from being clipped on medium widths */
+  gap: 20px;
+  /* Allow nav items to wrap onto the next line if necessary instead of truncating */
+  white-space: normal;
   margin: 0;
   padding: 0;
 }
